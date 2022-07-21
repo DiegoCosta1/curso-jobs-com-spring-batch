@@ -9,15 +9,20 @@ import org.springframework.batch.core.configuration.annotation.StepBuilderFactor
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @EnableBatchProcessing
 @Configuration
 public class BatchConfig {
+  @Autowired
   private JobBuilderFactory jobBuilderFactory;
+	
+  @Autowired
   private StepBuilderFactory stepBuilderFactory;
   
-  private Step imprimeOlaStep() {
+  public Step imprimeOlaStep() {
     return stepBuilderFactory.get("imprimeOlaStep").tasklet(new Tasklet() {
       @Override
       public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
@@ -27,7 +32,8 @@ public class BatchConfig {
     }).build();
   }
   
-  private Job imprimeOlaJob() {
+  @Bean
+  public Job imprimeOlaJob() {
     return jobBuilderFactory.get("imprimeOlaJob").start(imprimeOlaStep()).build();
   }
 }
