@@ -4,6 +4,9 @@
 ## Veja mais...
 1. [Desenvolvimento com Spring Batch - Overview](https://giuliana-bezerra.medium.com/spring-batch-para-desenvolvimento-de-jobs-1674ec5b9a20)
 2. [Por que você deveria utilizar Spring Batch para processamento batch](https://giuliana-bezerra.medium.com/why-you-should-be-using-spring-batch-for-batch-processing-83f5aafb965f)
+3. [Linguagem de domínio do Spring Batch](https://docs.spring.io/spring-batch/docs/current/reference/html/domain.html#domainLanguageOfBatch)
+4. [Configuração do Job](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-jobs-b4363dd6c676)
+5. [Configuração de Step](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-steps-4d42af2696ec)
 
 ## Exercícios
 1) O que é processamento batch?
