@@ -25,3 +25,17 @@
 ###### - Facilitar o empacotamento e implantação do job em ambiente produtivo
 ###### - Facilitar a criação e configuração do job
 ###### - Facilitar o gerenciamento de dependências do projeto
+
+6) Sobre steps, é correto afirmar:
+###### - Existem dois tipos de step: Tasklet e baseado em\ chunk.
+###### - Steps do tipo tasklet são utilizados para criar tarefas mais simples.
+###### - Steps baseados em chunk são utilizados para executar tarefas mais complexas que envolvem a leitura e escrita de dados.
+###### - Um leitor e um escritor são obrigatórios para criar um step baseado em chunk.
+
+7) Steps baseados em chunk possuem uma propriedade chamada commit interval. Sobre essa propriedade, é correto afirmar:
+###### - Deve ser definida de forma a equilibrar o uso de memória do job e o seu tempo de execução. A definição do valor é empírica. A volumetria da base de dados deve ser analisada para que o valor definido tire o máximo proveito do uso de chunks.
+
+8) Qual a vantagem em persistir os metadados de um Job Spring Batch no banco de dados?
+###### - Os dados de execução não serão perdidos e assim é possível realizar audiotira no futuro.
+###### - É possível monitorar o andamento da execução de um Job consultando os dados salvos no banco de dados.
+###### - É possíve verificar quantos itens foram processados com sucesso pelo Job, após a sua execução.
