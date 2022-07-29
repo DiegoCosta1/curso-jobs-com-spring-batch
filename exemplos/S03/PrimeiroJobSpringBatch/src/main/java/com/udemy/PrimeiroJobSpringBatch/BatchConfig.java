@@ -6,10 +6,13 @@ import org.springframework.batch.core.StepContribution;
 import org.springframework.batch.core.configuration.annotation.EnableBatchProcessing;
 import org.springframework.batch.core.configuration.annotation.JobBuilderFactory;
 import org.springframework.batch.core.configuration.annotation.StepBuilderFactory;
+import org.springframework.batch.core.configuration.annotation.StepScope;
+import org.springframework.batch.core.launch.support.RunIdIncrementer;
 import org.springframework.batch.core.scope.context.ChunkContext;
 import org.springframework.batch.core.step.tasklet.Tasklet;
 import org.springframework.batch.repeat.RepeatStatus;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
@@ -27,20 +30,27 @@ public class BatchConfig {
 		return jobs
 				.get("printHelloWorld")
 				.start(printHelloWorld())
+				.incrementer(new RunIdIncrementer())
 				.build();
 	}
 	
 	public Step printHelloWorld() {
 		return steps
 				.get("printHelloWorld")
-				.tasklet(new Tasklet() {
-					
-					@Override
-					public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
-						System.out.println("Hello World!");
-						return RepeatStatus.FINISHED;
-					}
-				})
+				.tasklet(printTasklet(null))
 				.build();
+	}
+	
+	@Bean
+	@StepScope
+	public Tasklet printTasklet(@Value("#{jobParameters['nome']}") String nome) {
+		return new Tasklet() {
+			
+			@Override
+			public RepeatStatus execute(StepContribution contribution, ChunkContext chunkContext) throws Exception {
+				System.out.println("Hello " + nome + "!");
+				return RepeatStatus.FINISHED;
+			}
+		};
 	}
 }
