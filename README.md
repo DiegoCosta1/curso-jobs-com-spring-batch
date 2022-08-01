@@ -16,7 +16,10 @@
 ###### Padronizar o processamento batch adotando as melhores práticas e técnicas da indústria. A Accenture juntou as melhores práticas em processamento batch para criar a primeira versão do framework.
 
 3) A respeito dos desafios existentes no processamento batch, NÃO é um deles:
-###### UX (experiência com o usuário). Por não possuírem interface gráfica, UX não representa um desafio no processamento batch.
+###### UX (experiência com o usuário). Por não possuírem interface gráfica, UX não representa um desafio no processamento batch. Sendo apenas as questões de:
+###### - Usabilidade
+###### - Escalabilidade
+###### - Disponibilidade
 
 4) Como o processamento batch é implementado com o Spring Batch?
 ###### Através de um job e seu conjunto de steps. Um job é a tarefa maior que é composta por tarefas menores (os steps) que possuem início e fim.
