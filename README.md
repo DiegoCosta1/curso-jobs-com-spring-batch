@@ -39,3 +39,18 @@
 ###### - Os dados de execução não serão perdidos e assim é possível realizar audiotira no futuro.
 ###### - É possível monitorar o andamento da execução de um Job consultando os dados salvos no banco de dados.
 ###### - É possíve verificar quantos itens foram processados com sucesso pelo Job, após a sua execução.
+
+9) Qual a vantagem em externalizar propriedades de um Job Spring Batch?
+###### - Separar dados específicos do seu ambiente de implantação da implementação do Job, o que produz um único implantável para todos os ambientes.
+###### - Não expor dados sensíveis no repositório de código fonte do Job.
+###### - Modificar propriedades sem a necessidade de realizar um novo deploy do Job.
+
+10) Qual a vantagem em configurar múltiplos bancos de dados num Job Spring Batch?
+###### - Permite ler e escrever dados em diferentes bases de dados.
+###### - Permite separar a lógica de negócio dos metadados do Spring Batch.
+###### - Permite isolar a infraestrutura de implantação da base de dados do Job, da infraestrutura de implantação dos sistemas que consomem os dados de negócio.
+
+11) Qual a vantagem em configurar o log em Jobs Spring Batch?
+###### - Permite customizar o formato do log para que seja compatível com sistemas que consomem e expõe esses logs em interfaces gráficas (e.g Kibana, Prometheus, ...).
+###### - Logs facilitam a identificação de erros no Job.
+###### - Dependendo do ambiente de implantação do Job, é possível configurar a verbosidade do log, evitando assim que informações de DEBUG apareçam em logs do ambiente de produção, por exemplo.
