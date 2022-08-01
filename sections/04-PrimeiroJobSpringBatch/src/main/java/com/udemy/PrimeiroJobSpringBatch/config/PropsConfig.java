@@ -12,8 +12,7 @@ public class PropsConfig {
 	public PropertySourcesPlaceholderConfigurer config() {
 		PropertySourcesPlaceholderConfigurer configurer = new PropertySourcesPlaceholderConfigurer();
 		
-		/*change path to your location or actually use project application.properties*/
-		configurer.setLocation(new FileSystemResource("D:/git/curso-jobs-com-spring-batch/config/application.properties"));
+		configurer.setLocation(new FileSystemResource("config/application.properties"));
 		return configurer;
 	}
 }
