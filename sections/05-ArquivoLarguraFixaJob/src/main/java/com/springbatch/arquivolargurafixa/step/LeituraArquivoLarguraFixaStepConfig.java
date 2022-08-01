@@ -20,7 +20,11 @@ public class LeituraArquivoLarguraFixaStepConfig {
 			ItemWriter<Cliente> leituraArquivoLarguraFixaWriter) {
 		return stepBuilderFactory
 				.get("leituraArquivoLarguraFixaStep")
-				.<Cliente, Cliente>chunk(1)
+				.<Cliente, Cliente>chunk(1) // -> após 'n' itens (chunk) serem processados, o batch 
+											//    faz commit dos status/metadadod, podendo reiniciar sem perder
+											//    o progresso total, então quanto maior o chunk mais progresso
+											//    será salvo com um commit, porém quanto menor o chunk mais ele 
+											//    será performático (pois acessa menos vezes no banco)
 				.reader(leituraArquivoLarguraFixaReader)
 				.writer(leituraArquivoLarguraFixaWriter)
 				.build();
