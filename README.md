@@ -1,6 +1,16 @@
 # [Curso para desenvolvimento de jobs com Spring Batch](https://www.udemy.com/course/curso-para-desenvolvimento-de-jobs-com-spring-batch/learn/lecture/18418770#overview)
 ### Criado por: [Giuliana S Bezerra](https://www.udemy.com/user/giuliana-silva-bezerra/)
 
+## Subindo a aplicação
+- Os projetos estão separados por seções ou exercícios, importe qual projeto quiser executar para sua IDE com Spring Boot (e.g [Spring Tools (STS)](https://spring.io/tools): `File > Import... > Existing Projects into Workspace`)
+  > OBS: para alguns projetos, também pode ser necessário configurar o application properties com a url, usuário e senha de banco e passar alguns argumentos de execução (e.g STS: `Run > Run Configurations... > Arguments > Program arguments`):
+  > ```
+  > name=Alonso
+  > msg=Hello World!    *Seção 3 - utilizado para print
+  > arquivoClientes=file:files/clientes.txt    *Seção 5 -ncessário para leitura do arquivo txt
+  > ```
+- (opcional) Outras IDEs: [IntelliJ Community](https://www.jetbrains.com/pt-br/idea/download), [VS Code](https://code.visualstudio.com/download) (+ [pacote de extensões Spring](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack))
+
 ## Veja mais...
 1. [Desenvolvimento com Spring Batch - Overview](https://giuliana-bezerra.medium.com/spring-batch-para-desenvolvimento-de-jobs-1674ec5b9a20)
 2. [Por que você deveria utilizar Spring Batch para processamento batch](https://giuliana-bezerra.medium.com/why-you-should-be-using-spring-batch-for-batch-processing-83f5aafb965f)
