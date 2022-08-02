@@ -17,6 +17,13 @@
 3. [Linguagem de domínio do Spring Batch](https://docs.spring.io/spring-batch/docs/current/reference/html/domain.html#domainLanguageOfBatch)
 4. [Configuração do Job](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-jobs-b4363dd6c676)
 5. [Configuração de Step](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-steps-4d42af2696ec)
+- [Boas Práticas](https://giuliana-bezerra.medium.com/10-boas-praticas-para-o-desenvolvimento-de-jobs-spring-batch-34b6efbc8d2a)
+- [Leitores compostos no Spring Batch](https://giuliana-bezerra.medium.com/leitores-compostos-no-spring-batch-2775f9d7a243)
+- [Configuração de retry no Spring Batch](https://giuliana-bezerra.medium.com/tolerancia-a-falhas-com-retry-no-spring-batch-786db305ec13)
+- [Artigo sobre Spring Batch para carregar cache do Redis](https://giuliana-bezerra.medium.com/spring-batch-para-carregar-dados-de-cache-no-redis-c82f75c45bd6)
+- [Artigo sobre testes de integração com Spring Batch](https://giuliana-bezerra.medium.com/testes-de-integracao-com-spring-batch-2e019787d081)
+- [What's new on Spring Batch 4.3](https://www.youtube.com/watch?v=AfR8jjELBOU&ab_channel=SpringDeveloper)
+- [Leitura de arquivos com formato customizado](https://medium.com/@giu.drawer/leitura-de-arquivos-com-conteudo-customizado-utilizando-spring-batch-b72be2243c27)
 
 ## Exercícios
 1) O que é processamento batch?
