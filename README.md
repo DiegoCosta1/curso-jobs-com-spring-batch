@@ -18,6 +18,8 @@
 3. [Linguagem de domínio do Spring Batch](https://docs.spring.io/spring-batch/docs/current/reference/html/domain.html#domainLanguageOfBatch)
 4. [Configuração do Job](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-jobs-b4363dd6c676)
 5. [Configuração de Step](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-steps-4d42af2696ec)
+6. [Leitor de XML](https://docs.spring.io/spring-batch/docs/current/reference/html/index-single.html#StaxEventItemReader)
+7. [Leitor de JSON](https://docs.spring.io/spring-batch/docs/current/reference/html/index-single.html#JsonItemReader)
 - [Boas Práticas](https://giuliana-bezerra.medium.com/10-boas-praticas-para-o-desenvolvimento-de-jobs-spring-batch-34b6efbc8d2a)
 - [Leitores compostos no Spring Batch](https://giuliana-bezerra.medium.com/leitores-compostos-no-spring-batch-2775f9d7a243)
 - [Configuração de retry no Spring Batch](https://giuliana-bezerra.medium.com/tolerancia-a-falhas-com-retry-no-spring-batch-786db305ec13)
@@ -75,3 +77,13 @@
 ###### - Permite customizar o formato do log para que seja compatível com sistemas que consomem e expõe esses logs em interfaces gráficas (e.g Kibana, Prometheus, ...).
 ###### - Logs facilitam a identificação de erros no Job.
 ###### - Dependendo do ambiente de implantação do Job, é possível configurar a verbosidade do log, evitando assim que informações de DEBUG apareçam em logs do ambiente de produção, por exemplo.
+
+13) Tipos de leitores de banco de dados utilizados com batch:
+###### - JDBC
+###### - Hibernate JPA
+###### - MongoDB (NoSQL)
+###### - Entre outros...
+
+14) Diferença entre os tipos de conjunto de dados cursores e com paginação
+###### - Os baseados em cursores recuperam vários itens que ficam armazenados em memória, é mais performático por fazer menos consultas ao banco, mas, utiliza mais memória
+###### - Já leitores JDBC baseados em paginação consultam uma página por vez, sendo menos performático e otimizando o uso de memória
