@@ -58,7 +58,7 @@ public class ClienteTransacaoLineMapperConfig {
 	private LineTokenizer transacaoLineTokenizer() {
 		DelimitedLineTokenizer lineTokenizer = new DelimitedLineTokenizer();
 		lineTokenizer.setNames("id", "descricao", "valor");
-		lineTokenizer.setIncludedFields(1,2,3,4);
+		lineTokenizer.setIncludedFields(1,2,3);
 		return lineTokenizer;
 	}
 }

@@ -3,9 +3,6 @@ package com.springbatch.arquivomultiplosformatos.reader;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.ItemStreamReader;
-import org.springframework.batch.item.NonTransientResourceException;
-import org.springframework.batch.item.ParseException;
-import org.springframework.batch.item.UnexpectedInputException;
 
 import com.springbatch.arquivomultiplosformatos.dominio.Cliente;
 import com.springbatch.arquivomultiplosformatos.dominio.Transacao;
@@ -36,7 +33,7 @@ public class ArquivoClienteTransacaoReader
 	}
 
 	@Override
-	public Cliente read() throws Exception, UnexpectedInputException, ParseException, NonTransientResourceException {
+	public Cliente read() throws Exception {
 		if (objAtual == null)
 			objAtual = delegate.read();// ler objeto
 
