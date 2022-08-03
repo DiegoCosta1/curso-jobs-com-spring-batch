@@ -7,7 +7,8 @@
   > ```
   > name=Alonso
   > msg=Hello World!    *Seção 3 - utilizado para print
-  > arquivoClientes=file:files/clientes.txt    *Seção 5 -ncessário para leitura do arquivo txt
+  > arquivoClientes=file:files/clientes.txt    *Seção 5 parte 1 -ncessário para leitura do arquivo txt
+  > arquivoClientes=file:files/clientes*       *Seção 5 parte 2 -ncessário para leitura de mútiplos arquivos com prefixo
   > ```
 - (opcional) Outras IDEs: [IntelliJ Community](https://www.jetbrains.com/pt-br/idea/download), [VS Code](https://code.visualstudio.com/download) (+ [pacote de extensões Spring](https://marketplace.visualstudio.com/items?itemName=Pivotal.vscode-boot-dev-pack))
 

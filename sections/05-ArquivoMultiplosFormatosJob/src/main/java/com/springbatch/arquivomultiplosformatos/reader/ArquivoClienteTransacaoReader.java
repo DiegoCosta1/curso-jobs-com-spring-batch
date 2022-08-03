@@ -3,17 +3,24 @@ package com.springbatch.arquivomultiplosformatos.reader;
 import org.springframework.batch.item.ExecutionContext;
 import org.springframework.batch.item.ItemStreamException;
 import org.springframework.batch.item.ItemStreamReader;
+import org.springframework.batch.item.NonTransientResourceException;
+import org.springframework.batch.item.ParseException;
+import org.springframework.batch.item.UnexpectedInputException;
+import org.springframework.batch.item.file.FlatFileItemReader;
+import org.springframework.batch.item.file.ResourceAwareItemReaderItemStream;
+import org.springframework.core.io.Resource;
 
 import com.springbatch.arquivomultiplosformatos.dominio.Cliente;
 import com.springbatch.arquivomultiplosformatos.dominio.Transacao;
 
 public class ArquivoClienteTransacaoReader
-		implements ItemStreamReader<Cliente> {
+		implements ItemStreamReader<Cliente>, ResourceAwareItemReaderItemStream<Cliente> {
 
-	private ItemStreamReader<Object> delegate;
 	private Object objAtual;
+//	private ItemStreamReader<Object> delegate;
+	private FlatFileItemReader<Object> delegate;
 
-	public ArquivoClienteTransacaoReader(ItemStreamReader<Object> delegate) {
+	public ArquivoClienteTransacaoReader(FlatFileItemReader<Object> delegate) {
 		this.delegate = delegate;
 	}
 
@@ -51,6 +58,11 @@ public class ArquivoClienteTransacaoReader
 	private Object peek() throws Exception {
 		objAtual = delegate.read(); // leitura do proximo item
 		return objAtual;
+	}
+
+	@Override
+	public void setResource(Resource resource) {
+		delegate.setResource(resource);		
 	}
 
 }
