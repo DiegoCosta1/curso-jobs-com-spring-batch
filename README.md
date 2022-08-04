@@ -20,7 +20,10 @@
 5. [Configuração de Step](https://medium.com/@giu.drawer/desenvolvimento-com-spring-batch-steps-4d42af2696ec)
 6. [Leitor de XML](https://docs.spring.io/spring-batch/docs/current/reference/html/index-single.html#StaxEventItemReader)
 7. [Leitor de JSON](https://docs.spring.io/spring-batch/docs/current/reference/html/index-single.html#JsonItemReader)
-- [Boas Práticas](https://giuliana-bezerra.medium.com/10-boas-praticas-para-o-desenvolvimento-de-jobs-spring-batch-34b6efbc8d2a)
+8. [Leitores em banco de dados](https://docs.spring.io/spring-batch/docs/current/reference/html/readersAndWriters.html#database)
+9. [Leitor com API REST](https://www.petrikainulainen.net/programming/spring-framework/spring-batch-tutorial-reading-information-from-a-rest-api/)
+10. [Filas assíncronas](https://github.com/spring-tips/kafka-and-spring-batch/blob/master/src/main/java/com/example/bk/consumer/ConsumerApplication.java)
+- [Boas Práticas de desenvolvimento](https://giuliana-bezerra.medium.com/10-boas-praticas-para-o-desenvolvimento-de-jobs-spring-batch-34b6efbc8d2a)
 - [Leitores compostos no Spring Batch](https://giuliana-bezerra.medium.com/leitores-compostos-no-spring-batch-2775f9d7a243)
 - [Configuração de retry no Spring Batch](https://giuliana-bezerra.medium.com/tolerancia-a-falhas-com-retry-no-spring-batch-786db305ec13)
 - [Artigo sobre Spring Batch para carregar cache do Redis](https://giuliana-bezerra.medium.com/spring-batch-para-carregar-dados-de-cache-no-redis-c82f75c45bd6)
@@ -87,3 +90,23 @@
 14) Diferença entre os tipos de conjunto de dados cursores e com paginação
 ###### - Os baseados em cursores recuperam vários itens que ficam armazenados em memória, é mais performático por fazer menos consultas ao banco, mas, utiliza mais memória
 ###### - Já leitores JDBC baseados em paginação consultam uma página por vez, sendo menos performático e otimizando o uso de memória
+
+15) Sobre os leitores do Spring Batch:
+###### - É possível customizar leitores que não sejam disponibilizados no framework Spring Batch.
+###### - A ordenação dos registros lidos é importante para garantir a recuperação de falhas do Job.
+###### - O leitor lê um conjunto de dados e devolve os itens lidos, um a um, para o processamento e posterior escrita.
+###### - Se o leitor lançar alguma exceção que interrompa o job, não será possível retomar o processamento exatamente do item em que ele parou. Só é possível voltar o processamento do último chunk executado e commitado, ou seja, será retomado a partir do último chunk armazenado no banco de dados.
+
+16) Sobre arquivos Flat, é correto afirmar:
+###### - Não são arquivos com dados estruturados
+###### - O FieldSetMapper é responsável por mapear os tokens do arquivo em um objeto de domínio
+###### - O LineTokenizer é responsável por ler uma linha dividí-las em tokens, que representarão propriedades de um dado
+###### - Arquivos de largura fixa e delimitados são dados estruturados, não sendo considerado como arquivos do tipo Flat
+
+17) Sobre os leitores de banco de dados JDBC:
+###### - Costumam ser mais performáticos que as outras alternativas de alto nível
+###### - Podem ser baseados em cursores ou paginadores
+###### - A escolha entre o uso de cursor e paginador vai depender do volume de dados que será lido e dos recursos disponíveis na máquina de implantação. Cursores são mais rápidos que os paginadores, em compensação gastam mais memória. Portanto, a escolha de um dos dois terá efeito direto no desempenho do job.
+
+18) Sobre o intervalo de commit (chunk size):
+###### - Deve ter um valor que minimize o número de transações abertas, ao mesmo tempo que permite a recuperação de falhas do job
