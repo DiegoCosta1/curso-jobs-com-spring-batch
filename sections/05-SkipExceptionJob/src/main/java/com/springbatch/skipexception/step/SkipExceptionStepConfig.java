@@ -22,6 +22,9 @@ public class SkipExceptionStepConfig {
 				.<Cliente, Cliente>chunk(11)
 				.reader(skipExceptionReader)
 				.writer(skipExceptionWriter)
+				.faultTolerant()
+				.skip(Exception.class) // é mais recomendável usar uma classe mais customizada para exceções previstas
+				.skipLimit(1) // número máximo de exceções toleradas
 				.build();
 	}
 }

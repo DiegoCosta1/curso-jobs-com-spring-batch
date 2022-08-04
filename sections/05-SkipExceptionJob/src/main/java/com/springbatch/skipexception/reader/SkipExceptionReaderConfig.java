@@ -1,5 +1,8 @@
 package com.springbatch.skipexception.reader;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.sql.DataSource;
 
 import org.springframework.batch.item.ItemReader;
@@ -7,6 +10,8 @@ import org.springframework.batch.item.database.builder.JdbcCursorItemReaderBuild
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.expression.spel.CodeFlow.ClinitAdder;
+import org.springframework.jdbc.core.RowMapper;
 
 import com.springbatch.skipexception.dominio.Cliente;
 
@@ -18,7 +23,38 @@ public class SkipExceptionReaderConfig {
 				.name("skipExceptionReader")
 				.dataSource(dataSource)
 				.sql("select * from cliente")
-				.beanRowMapper(Cliente.class)
+				.rowMapper(rowMapper()) // custom row mapper para forçar exceção
 				.build();
 	}
+
+	private RowMapper<Cliente> rowMapper() {
+		return new RowMapper<Cliente>() {
+
+			@Override
+			public Cliente mapRow(ResultSet rs, int rowNum) throws SQLException {
+				if (rs.getRow() == 2) // forçao exceção no segundo item
+					throw new SQLException("Encerrando a execução - Cliente inválido [" + rs.getString("email") + "]");
+				else return clienteRowMapper(rs);
+			}
+
+			private Cliente clienteRowMapper(ResultSet rs) throws SQLException {
+				Cliente cliente = new Cliente();
+				cliente.setNome(rs.getString("nome"));
+				cliente.setSobrenome(rs.getString("sobrenome"));
+				cliente.setIdade(rs.getString("idade"));
+				cliente.setEmail(rs.getString("email"));
+				return cliente;
+			}
+		};
+	}
+	
+//	@Bean
+//	public ItemReader<Cliente> skipExceptionReader(@Qualifier("appDataSource") DataSource dataSource) {
+//		return new JdbcCursorItemReaderBuilder<Cliente>()
+//				.name("skipExceptionReader")
+//				.dataSource(dataSource)
+//				.sql("select * from cliente")
+//				.beanRowMapper(Cliente.class)
+//				.build();
+//	}
 }
